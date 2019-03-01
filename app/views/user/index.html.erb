@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photosite</title>
+</head>
+<body>
+<h2 align="center">UserPage: </h2>
+<table align="center">
+  <tr bgcolor="#ff7f50" ><b><th style="height: 50px;width: 200px; font-size: xx-large;" align="center">User</th>
+    <th style="height: 50px;width: 200px; font-size: xx-large;" align="center">First Name</th>
+    <th style="height: 50px;width: 200px; font-size: xx-large;" align="center">Last Name</th></b>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <th style="  font-size: large;" align="center"><%= link_to user.id, "photos/index/#{user.id}" %>"</th>
+      <th style="  font-size: large;" align="center"><%= link_to user.first_name, "photos/index/#{user.id}" %>"</th>
+      <th style="  font-size: large;" align="center"><%= link_to user.last_name, "photos/index/#{user.id}" %>"</th>
+    </tr>
+  <% end %>
+</table>
+</body>
+</html>

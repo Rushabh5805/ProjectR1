@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photosite</title>
+</head>
+<body>
+<h1 align="center">Photo of the User : <i><%=@user.first_name %> <%=@user.last_name %> </i> </h1>
+<table border="solid black" align="center">
+  <tr bgcolor="#ff7f50" style="width: 400px;" >
+  <th style="height: 50px;width: 200px; font-size: xx-large;" align="center">Photo of Celebrity</th>
+  <th style="height: 50px;width: 200px; font-size: xx-large;" align="center">Created at</th>
+
+</tr>
+<% @photo.each do|photo| %>
+    <tr> <td align="center"><%= image_tag("/assets/#{photo.file_name}" ,:style => "border: 1px solid red; height: 200px; width: 200px;") %></td>
+
+  <td style=" width:400px;  font-size: large;" align="center"><%= photo.date_time %></td>
+  <% @comments.where("photo_id=?",photo.id).each do |comment|%>
+     </tr>
+        <tr>
+          <td style=" width:400px;  font-size: large;" align="center">Comment : <%=comment.comment_text%>
+          <td style=" width:400px; font-size: large;" align="center"><%=comment.date_time%></td>
+          <td>Posted By : <%= link_to display_name(comment.user_id), "#{comment.user_id}" %>
+
+        </tr>
+
+
+  <% end %>
+
+<% end %>
+</table>
+</body>
+</html>
